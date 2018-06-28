@@ -3,8 +3,14 @@ import Group from '@/components/group';
 import Role from '@/components/role';
 import Seller from '@/components/role/seller';
 import Assign from '@/components/role/assign';
+import SignIn from '@/components/signin';
 
 const Routes = [
+  {
+    path: '/signin',
+    name: 'SignIn',
+    component: SignIn,
+  },
   {
     path: '/',
     name: 'HomePage',

@@ -49,12 +49,22 @@
         </el-menu-item>
         <el-menu-item index="/quotaconfirm">
           <i class="el-icon-setting"></i>
-          <span slot="title">配额确认</span>
+          <span slot="title">{{this.userData}}}</span>
         </el-menu-item>
       </el-menu>
 </template>
 <script>
+import { mapState } from 'vuex';
 export default {
   name: 'slide',
+  data() {
+    return {
+    };
+  },
+  computed:{
+    ...mapState({
+        userData: state => state.app.userData.modules,
+    }),
+  },
 };
 </script>

@@ -3,16 +3,16 @@
     <el-badge :value="200" :max="99" class="item">
       <i style="float:left" class="el-icon-bell"></i>
     </el-badge>
-    <el-dropdown>
+    <el-dropdown @command="handleCommand">
   <span class="el-dropdown-link" style="cursor: pointer">
-    cfz
+    {{this.$store.state.app.userData.username}}
   </span>
   <el-dropdown-menu slot="dropdown">
     <el-dropdown-item>xxxxxxxxx</el-dropdown-item>
     <el-dropdown-item>xxxxxxxxx</el-dropdown-item>
     <el-dropdown-item>xxxxxxxxx</el-dropdown-item>
-    <el-dropdown-item disabled>xxxxxxxxx</el-dropdown-item>
-    <el-dropdown-item divided>退出</el-dropdown-item>
+    <el-dropdown-item>xxxxxxxxx</el-dropdown-item>
+    <el-dropdown-item command="signout" divided><i class="el-icon-circle-close"></i>&nbsp;&nbsp;退出</el-dropdown-item>
   </el-dropdown-menu>
 </el-dropdown>
   </div>
@@ -31,7 +31,31 @@
 </style>
 
 <script>
+import { req } from '@/utils/request';
+
 export default {
   name: 'headrBar',
+  methods: {
+    handleCommand: (command) => {
+      switch (command) {
+        case 'signout':
+          req({
+            url: '/manage/logout/',
+            method: 'post',
+          }).then((res) => {
+            if (res.data.meta.code === 0) {
+              localStorage.clear();
+              // 死方法，直接刷新界面，清除model里面的state
+              window.location.href = '/';
+            }
+          });
+        break;
+      }
+    }
+  },
+  beforeCreate() {
+    this.$store.dispatch('getUser');
+  }
 };
 </script>
+

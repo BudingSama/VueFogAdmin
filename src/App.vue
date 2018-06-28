@@ -8,15 +8,12 @@
 import { mapGetters } from 'vuex';
 export default {
   name: 'App',
-  computed: {
-    ...mapGetters([//...函数名 使用对象展开运算符将此对象混入到外部对象中
-        'getContextPathSrc'
-      ])
-  },
-  mounted(){
-    console.log(this.$store);
-    this.$store.dispatch('getGroup');
-}
+  beforeCreate() {
+    // this.$store.dispatch('getUser');
+    if(!localStorage.getItem('token')) {
+      this.$router.push('signin');
+    }
+  }
 };
 </script>
 
