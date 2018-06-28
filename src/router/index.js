@@ -7,11 +7,6 @@ import SignIn from '@/components/signin';
 
 const Routes = [
   {
-    path: '/signin',
-    name: 'SignIn',
-    component: SignIn,
-  },
-  {
     path: '/',
     name: 'HomePage',
     component: HomePage,
@@ -35,6 +30,11 @@ const Routes = [
         ],
       },
     ],
+  },
+  {
+    path: '/signin',
+    name: 'SignIn',
+    component: SignIn,
   },
 ];
 

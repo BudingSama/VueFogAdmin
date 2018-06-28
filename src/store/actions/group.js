@@ -1,6 +1,10 @@
+import { req } from '../../utils/request';
+
 const fetchListAction = {
-  getGroup(context) {
-    context.commit('getGroup');
+  getGroup({ commit }) {
+    if (localStorage.getItem('token')) {
+      req({ url: '/manage/groupList/' }).then(data => commit('setGroup', data.data.data));
+    }
   },
 };
 

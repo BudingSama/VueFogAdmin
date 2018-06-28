@@ -55,6 +55,7 @@ export default {
   },
   beforeCreate() {
     this.$store.dispatch('getUser');
+    this.$store.dispatch('getModules');
   }
 };
 </script>

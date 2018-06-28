@@ -5,6 +5,7 @@ import fetchListMutation from '../mutations/app';
 const App = {
   state: {
     userData: {},
+    modules: [],
   },
   actions: fetchListAction,
   getters: fetchListGetter,

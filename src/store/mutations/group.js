@@ -1,6 +1,6 @@
 const fetchListMutation = {
-  getGroup() {
-    console.log(123);
+  setGroup(state, data) {
+    state.groupList = data;
   },
 };
 

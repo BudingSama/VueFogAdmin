@@ -4,6 +4,7 @@ import fetchListMutation from '../mutations/group';
 
 const Group = {
   state: {
+    groupList: [],
   },
   actions: fetchListAction,
   getters: fetchListGetter,

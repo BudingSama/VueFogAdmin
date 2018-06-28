@@ -9,6 +9,11 @@ const AppActions = {
       req({ url: '/manage/userDetail/' }).then(data => commit('setUser', data.data.data));
     }
   },
+  getModules({ commit }) {
+    if (localStorage.getItem('token')) {
+      req({ url: '/manage/moduleList/' }).then(data => commit('setModules', data.data.data));
+    }
+  },
 };
 
 export default AppActions;

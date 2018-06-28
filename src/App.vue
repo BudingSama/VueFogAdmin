@@ -9,11 +9,10 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'App',
   beforeCreate() {
-    // this.$store.dispatch('getUser');
     if(!localStorage.getItem('token')) {
       this.$router.push('signin');
     }
-  }
+  },
 };
 </script>
 
